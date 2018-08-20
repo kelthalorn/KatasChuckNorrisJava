@@ -10,7 +10,8 @@ public class ChuckNorrisJavaKata {
     public static void main (String[] args) {
         ChuckNorris chuckNorris = new ChuckNorris(true);
         chuckNorris.init(readUserInput());
-        System.out.println(chuckNorris.getBinaryString());
+        chuckNorris.convertBinaryStringToUnaryString(0);
+        System.out.println(chuckNorris.getOutput());
     }   
     
     private static String readUserInput() {
