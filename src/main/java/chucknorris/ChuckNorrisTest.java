@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+package chucknorris;
 
 public class ChuckNorrisTest {
 

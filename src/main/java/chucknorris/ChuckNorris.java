@@ -5,12 +5,12 @@ public class ChuckNorris {
     private String binaryString;
     private String output;
 
-    public ChuckNorris(String stringToParse) {
+    public ChuckNorris(String stringToParse, int nbBytes) {
         this.output = "";
         byte[] bytes = convertStringToByte(stringToParse);
         this.binaryString = "";
         for (byte current: bytes) {
-            this.binaryString += convertByteToBinaryString(current);
+            this.binaryString += convertByteToBinaryString(current, nbBytes);
         }
     }
 
@@ -26,16 +26,16 @@ public class ChuckNorris {
         return asciiString.getBytes();
     }
 
-    private String convertByteToBinaryString(byte characterInByte) {
+    private String convertByteToBinaryString(byte characterInByte, int nbBytes) {
         StringBuilder binary = new StringBuilder();
         
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < nbBytes + 1; i++)
         {
             binary.append((characterInByte & 128) == 0 ? 0 : 1);
             characterInByte <<= 1;
         }
 
-        this.binaryString = binary.toString();
+        this.binaryString = binary.toString().substring(1);
         return binaryString;
     }
 
