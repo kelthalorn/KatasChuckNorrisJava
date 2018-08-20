@@ -40,27 +40,26 @@ CC vaut donc : 0 0 00 0000 0 000 00 0000 0 00
 
 **_Pour bien commencer_**
 
-Afin de commencer facilement, le projet comprend déjà la classe main (_ChuckNorrisJavaKata_) et la classe _ChuckNorris_ qui servira de classe principale.
+Afin de commencer facilement,  le projet comprend déjà la classe main (_ChuckNorrisJavaKata_) et la classe _ChuckNorris_ qui servira de classe principale.
 On y trouve les méthodes permettant la transformation d'un caractère en binaire. Le but est donc ici de se focaliser uniquement sur la transformation binaire vers unaire.
 
-Le constructeur _ChuckNorris_ prend deux arguments :
-    - la chaîne à décoder en unaire
+Il existe deux constructeurs _ChuckNorris_ (un pour la prod et l'autre pour le dev).
+On choisira de travailler logiquement sur celui de dev qui prend deux arguments :
+    - la représentation binaire de la chaine à décoder en unaire
     - un nombre _nbBytes_ qui permet de limiter le nombre de byte que l'on souhaite obtenir.
-    
-Par exemple, la chaîne "C" avec _nbByte_ à 1 donnera en binaire 1 alors qu'avec nbByte à 7 cela donnera 1000011
 
-Ce paramètre à pour seul but de pouvoir tester unitairement des cas simple impossible avec des codes ascii complet
+Ce second paramètre à pour seul but de pouvoir tester unitairement des cas simple impossible avec des codes ascii complets.
 On propose donc d'entamer les tests avec les paramètres suivant :
 
 _Test 1_ : 
 
-    message => 1
+    message en binaire => 011 0001 (donne 1 en ascii)
     nbBytes => 1
     expected => 00 0
 
 _Test 2_ : 
 
-    message => C
+    message en binaire =>  100 0011
     nbBytes => 1
     expected => 0 0
 

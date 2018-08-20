@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 public class ChuckNorrisJavaKata {
 
     public static void main (String[] args) {
-        ChuckNorris chuckNorris = new ChuckNorris(readUserInput(), 6);
+        ChuckNorris chuckNorris = new ChuckNorris(readUserInput());
         System.out.println(chuckNorris.getBinaryString());
     }   
     
