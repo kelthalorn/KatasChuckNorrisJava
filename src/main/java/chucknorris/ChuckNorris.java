@@ -1,7 +1,5 @@
 package chucknorris;
 
-import java.io.Console;
-
 public class ChuckNorris {
 
     private String binaryString;
