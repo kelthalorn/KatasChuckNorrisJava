@@ -22,6 +22,7 @@ public class ChuckNorris {
             this.binaryString = stringToParse;
         }
     }
+
     public String getBinaryString() {
         return this.binaryString;
     }
@@ -47,11 +48,40 @@ public class ChuckNorris {
         return binaryString;
     }
 
-    public void convertBinaryStringToUnaryString() {
-        if (this.binaryString.equals("0")) {
-            this.output = "00 0";
+    public void convertBinaryStringToUnaryString(int byteIndex) {
+        String[] currentBinaryString = this.binaryString.split("");
+        String currentByteMasterValue = "0";
+
+        if (currentBinaryString[byteIndex].equals("0")) {
+            this.output += "00 ";
         } else {
-            this.output = "0 0";
+            currentByteMasterValue = "1";
+            this.output += "0 ";
         }
+
+        int newByteIndex = searchForCurrentByteRecurrence(currentByteMasterValue, currentBinaryString, byteIndex);
+        if (newByteIndex == currentBinaryString.length) {
+            if (this.output.charAt(this.output.length() - 1) == ' ') {
+                this.output = this.output.substring(0, this.output.length() -1);
+            }
+            return;
+        }
+
+        convertBinaryStringToUnaryString(newByteIndex);
+    }
+
+    private int searchForCurrentByteRecurrence(String currentByteMasterValue, String[] currentBinaryString, int byteIndex) {
+        String currentRecurrence = "0";
+        int index;
+        for (index = byteIndex+1; index < currentBinaryString.length; index++) {
+            if (currentBinaryString[index].equals(currentByteMasterValue)) {
+                currentRecurrence += "0";
+            } else {
+                this.output += currentRecurrence + " ";
+                return index;
+            }
+        }
+        this.output += currentRecurrence + " ";
+        return index;
     }
 }
