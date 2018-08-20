@@ -50,6 +50,6 @@ public class ChuckNorris {
     }
 
     public void convertBinaryStringToUnaryString() {
-        this.output = "0 0 00 0000 0 00";
+        this.output = "0 0";
     }
 }
