@@ -6,21 +6,22 @@ public class ChuckNorris {
 
     private String binaryString;
     private String output;
+    private boolean prod;
 
-    public ChuckNorris(String binaryToParse, int nbBytes) {
-        if (nbBytes < binaryToParse.length()) {
-            this.binaryString = binaryToParse.substring(nbBytes, -1);
-        } else {
-            System.out.println("le nombre de bytes doit être strictement inférieur à la taille de la chaîne de caractère");
-        }
+    public ChuckNorris(boolean prod) {
+        this.output = "";
+        this.binaryString = "";
+        this.prod = prod;
     }
 
-    public ChuckNorris(String stringToParse) {
-        this.output = "";
-        byte[] bytes = convertStringToByte(stringToParse);
-        this.binaryString = "";
-        for (byte current: bytes) {
-            this.binaryString += convertByteToBinaryString(current, 6);
+    public void init(String stringToParse) {
+        if (prod) {
+            byte[] bytes = convertStringToByte(stringToParse);
+            for (byte current : bytes) {
+                this.binaryString += convertByteToBinaryString(current);
+            }
+        } else {
+            this.binaryString = stringToParse;
         }
     }
     public String getBinaryString() {
@@ -35,10 +36,10 @@ public class ChuckNorris {
         return asciiString.getBytes();
     }
 
-    private String convertByteToBinaryString(byte characterInByte, int nbBytes) {
+    private String convertByteToBinaryString(byte characterInByte) {
         StringBuilder binary = new StringBuilder();
         
-        for (int i = 0; i < nbBytes + 1; i++)
+        for (int i = 0; i < 7; i++)
         {
             binary.append((characterInByte & 128) == 0 ? 0 : 1);
             characterInByte <<= 1;
